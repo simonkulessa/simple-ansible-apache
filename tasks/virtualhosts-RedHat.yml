@@ -1,0 +1,34 @@
+---
+
+- name: create directory for ssl certificates
+  file: path={{ item.sslpath }} state=directory
+  with_items: "{{ apache2_virtualhosts }}"
+
+- name: create self-signed ssl certificates
+  command: openssl req -newkey rsa:4096 -nodes -keyout {{ item.sslpath }}{{ item.name }}.key -x509 -subj "/C=DE/ST=SACHSEN/L=DRESDEN/O=IT/CN={{ item.name }}" -days 3650 -out {{ item.sslpath }}{{ item.name }}.crt
+  with_items: "{{ apache2_virtualhosts }}"
+  when: sslvhosts
+
+- name: create virtual hosts
+  template: src=../templates/virtualhost.j2 dest=/etc/httpd/conf.d/{{ item.name }}.conf
+  with_items: "{{ apache2_virtualhosts }}"
+
+- name: create document root for virtual hosts
+  file: path={{ item.docroot }} state=directory owner={{ item.owner }} group={{ item.group }} recurse=yes
+  with_items: "{{ apache2_virtualhosts }}"
+
+- name: change ownership of {{ item.docpath }} to {{ item.owner }} / {{ item.group }}
+  file: path={{ item.docpath }} state=directory owner={{ item.owner }} group={{ item.group }} recurse=yes
+  with_items: "{{ apache2_virtualhosts }}"
+
+- name: copy index.html file
+  copy: src=../files/index.html dest={{ item.docroot }}/index.html owner={{ item.owner }} group={{ item.group }}
+  with_items: "{{ apache2_virtualhosts }}"
+  notify: restart webserver
+
+- name: set firewalld rules (optional)
+  firewalld: service={{ item }} permanent=true state=enabled zone=public immediate=yes
+  with_items:
+    - http
+    - https
+  when: firewalldrules

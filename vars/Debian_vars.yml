@@ -1,0 +1,40 @@
+### apache2 related vars
+servicename: apache2
+
+## Debian and Ubuntu install vars
+apache2_packages:
+  - apache2
+  - apache2-utils
+  - libapache2-mod-security2
+
+apache2_modules:
+  - ssl
+  - headers
+  - rewrite
+  - security2
+  - deflate
+
+## apache2 virtual hosts vars
+sslvhosts: true # true or false
+
+apache_create_virtualhosts: true        # set to false if you don´t want to create virtualhosts
+
+apache2_virtualhosts:
+  - name: typo3-ansible.move-elevator.dev
+    owner: vagrant
+    group: www-data
+    docroot: /var/www/typo3-ansible.move-elevator.dev/htdocs
+    docpath: /var/www/typo3-ansible.move-elevator.dev
+    sslpath: /etc/ssl/localcerts/
+    sslcertificatefile: typo3-ansible.move-elevator.dev.crt
+    sslcertificatekeyfile: typo3-ansible.move-elevator.dev.key
+    logdir: /var/log/apache2/
+  - name: typo3-test.move-elevator.dev
+    owner: vagrant
+    group: www-data
+    docroot: /var/www/typo3-test.move-elevator.dev/htdocs
+    docpath: /var/www/typo3-test.move-elevator.dev
+    sslpath: /etc/ssl/localcerts/
+    sslcertificatefile: typo3-test.move-elevator.dev.crt
+    sslcertificatekeyfile: typo3-test.move-elevator.dev.key
+    logdir: /var/log/apache2/

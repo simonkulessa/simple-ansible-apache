@@ -1,0 +1,51 @@
+<VirtualHost *:80>
+
+       	ServerName {{ item.name }}
+       	ServerAdmin webmaster@move-elevator.dev
+
+       	DocumentRoot {{ item.docroot }}
+
+       	<Directory "{{ item.docroot }}/">
+       		Options ExecCGI FollowSymLinks
+       		AllowOverride All
+       		Order allow,deny
+       		Allow from All
+       	</Directory>
+
+       	ErrorLog "{{ item.logdir }}{{ item.name }}_error.log"
+       	CustomLog "{{ item.logdir }}{{ item.name }}_access.log" combined
+
+       	ServerSignature Off
+
+</VirtualHost>
+
+{% if sslvhosts == true %}
+<VirtualHost *:443>
+        ServerName {{ item.name }}
+        ServerAdmin webmaster@move-elevator.dev
+
+        Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+        DocumentRoot {{ item.docroot }}
+
+        <Directory "{{ item.docroot }}/">
+          Options ExecCGI FollowSymLinks
+          AllowOverride All
+          Order allow,deny
+          Allow from All
+        </Directory>
+
+        ErrorLog "{{ item.logdir }}{{ item.name }}_error.log"
+        CustomLog "{{ item.logdir }}{{ item.name }}_access.log" combined
+
+        ServerSignature Off
+
+       	SSLEngine on
+        SSLProtocol All -SSLv2 -SSLv3
+        SSLCipherSuite EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH
+
+       	SSLCertificateFile {{ item.sslpath }}{{ item.name }}.crt
+       	SSLCertificateKeyFile {{ item.sslpath }}{{ item.name }}.key
+
+</VirtualHost>
+{% endif %}

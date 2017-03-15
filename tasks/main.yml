@@ -1,0 +1,10 @@
+---
+
+- name: include vars
+  include_vars: ../vars/{{ ansible_os_family }}_vars.yml
+
+- include: "install-{{ ansible_os_family }}.yml"
+  static: no
+
+- include: "virtualhosts-{{ ansible_os_family }}.yml"
+  when: apache_create_virtualhosts

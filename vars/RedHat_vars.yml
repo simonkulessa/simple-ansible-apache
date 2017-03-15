@@ -1,0 +1,33 @@
+### apache2 related vars
+servicename: httpd
+firewalldrules: true 
+
+## RedHat and CentOS install vars
+httpd_packages:
+  - httpd
+  - httpd-devel
+
+## apache2 virtual hosts vars
+sslvhosts: false # true or false
+
+apache_create_virtualhosts: true        # set to false if you don´t want to create virtualhosts
+
+apache2_virtualhosts:
+  - name: typo3-ansible.move-elevator.dev
+    owner: vagrant
+    group: apache
+    docroot: /var/www/typo3-ansible.move-elevator.dev/htdocs
+    docpath: /var/www/typo3-ansible.move-elevator.dev
+    sslpath: /etc/ssl/localcerts/
+    sslcertificatefile: move_elevator_dev.crt
+    sslcertificatekeyfile: move_elevator_dev.key
+    logdir: /var/log/httpd/
+  - name: typo3-test.move-elevator.dev
+    owner: vagrant
+    group: apache
+    docroot: /var/www/typo3-test.move-elevator.dev/htdocs
+    docpath: /var/www/typo3-test.move-elevator.dev
+    sslpath: /etc/ssl/localcerts/
+    sslcertificatefile: move_elevator_dev.crt
+    sslcertificatekeyfile: move_elevator_dev.key
+    logdir: /var/log/httpd/

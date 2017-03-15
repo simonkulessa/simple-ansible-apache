@@ -1,0 +1,4 @@
+---
+
+- name: restart webserver
+  service: name={{ servicename }} state=restarted enabled=yes
