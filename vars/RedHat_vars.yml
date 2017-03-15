@@ -1,6 +1,6 @@
 ### apache2 related vars
 servicename: httpd
-firewalldrules: true 
+firewalldrules: true
 
 ## RedHat and CentOS install vars
 httpd_packages:
@@ -13,21 +13,21 @@ sslvhosts: false # true or false
 apache_create_virtualhosts: true        # set to false if you don´t want to create virtualhosts
 
 apache2_virtualhosts:
-  - name: typo3-ansible.move-elevator.dev
+  - name: virtualhost01.example.com
     owner: vagrant
-    group: apache
-    docroot: /var/www/typo3-ansible.move-elevator.dev/htdocs
-    docpath: /var/www/typo3-ansible.move-elevator.dev
+    group: www-data
+    docroot: /var/www/virtualhost01.example.com/htdocs
+    docpath: /var/www/virtualhost01.example.com
     sslpath: /etc/ssl/localcerts/
-    sslcertificatefile: move_elevator_dev.crt
-    sslcertificatekeyfile: move_elevator_dev.key
+    sslcertificatefile: virtualhost01.example.com.crt
+    sslcertificatekeyfile: virtualhost01.example.com.key
     logdir: /var/log/httpd/
-  - name: typo3-test.move-elevator.dev
+  - name: virtualhost02.example.com
     owner: vagrant
-    group: apache
-    docroot: /var/www/typo3-test.move-elevator.dev/htdocs
-    docpath: /var/www/typo3-test.move-elevator.dev
+    group: www-data
+    docroot: /var/www/virtualhost02.example.com/htdocs
+    docpath: /var/www/virtualhost02.example.com
     sslpath: /etc/ssl/localcerts/
-    sslcertificatefile: move_elevator_dev.crt
-    sslcertificatekeyfile: move_elevator_dev.key
+    sslcertificatefile: virtualhost02.example.com.crt
+    sslcertificatekeyfile: virtualhost02.example.com.key
     logdir: /var/log/httpd/

@@ -1,7 +1,7 @@
 <VirtualHost *:80>
 
        	ServerName {{ item.name }}
-       	ServerAdmin webmaster@move-elevator.dev
+       	ServerAdmin webmaster@example.com
 
        	DocumentRoot {{ item.docroot }}
 
@@ -22,7 +22,7 @@
 {% if sslvhosts == true %}
 <VirtualHost *:443>
         ServerName {{ item.name }}
-        ServerAdmin webmaster@move-elevator.dev
+        ServerAdmin webmaster@example.com
 
         Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 

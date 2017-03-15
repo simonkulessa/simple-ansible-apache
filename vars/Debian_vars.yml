@@ -20,21 +20,21 @@ sslvhosts: true # true or false
 apache_create_virtualhosts: true        # set to false if you don´t want to create virtualhosts
 
 apache2_virtualhosts:
-  - name: typo3-ansible.move-elevator.dev
+  - name: virtualhost01.example.com
     owner: vagrant
     group: www-data
-    docroot: /var/www/typo3-ansible.move-elevator.dev/htdocs
-    docpath: /var/www/typo3-ansible.move-elevator.dev
+    docroot: /var/www/virtualhost01.example.com/htdocs
+    docpath: /var/www/virtualhost01.example.com
     sslpath: /etc/ssl/localcerts/
-    sslcertificatefile: typo3-ansible.move-elevator.dev.crt
-    sslcertificatekeyfile: typo3-ansible.move-elevator.dev.key
+    sslcertificatefile: virtualhost01.example.com.crt
+    sslcertificatekeyfile: virtualhost01.example.com.key
     logdir: /var/log/apache2/
-  - name: typo3-test.move-elevator.dev
+  - name: virtualhost02.example.com
     owner: vagrant
     group: www-data
-    docroot: /var/www/typo3-test.move-elevator.dev/htdocs
-    docpath: /var/www/typo3-test.move-elevator.dev
+    docroot: /var/www/virtualhost02.example.com/htdocs
+    docpath: /var/www/virtualhost02.example.com
     sslpath: /etc/ssl/localcerts/
-    sslcertificatefile: typo3-test.move-elevator.dev.crt
-    sslcertificatekeyfile: typo3-test.move-elevator.dev.key
+    sslcertificatefile: virtualhost02.example.com.crt
+    sslcertificatekeyfile: virtualhost02.example.com.key
     logdir: /var/log/apache2/
