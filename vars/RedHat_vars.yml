@@ -15,7 +15,7 @@ apache_create_virtualhosts: true        # set to false if you don´t want to cre
 apache2_virtualhosts:
   - name: virtualhost01.example.com
     owner: vagrant
-    group: www-data
+    group: apache
     docroot: /var/www/virtualhost01.example.com/htdocs
     docpath: /var/www/virtualhost01.example.com
     sslpath: /etc/ssl/localcerts/
@@ -24,7 +24,7 @@ apache2_virtualhosts:
     logdir: /var/log/httpd/
   - name: virtualhost02.example.com
     owner: vagrant
-    group: www-data
+    group: apache
     docroot: /var/www/virtualhost02.example.com/htdocs
     docpath: /var/www/virtualhost02.example.com
     sslpath: /etc/ssl/localcerts/
