@@ -24,10 +24,12 @@ httpd_packages/apache2_packages
 ```
 Set of platform specific packages to be installed
 
+
 ```
 apache2_modules
 ```
 Debian/Ubuntu-specific: Set of apache2 modules to be enabled by default
+
 
 ```
 apache2_virtualhosts:
@@ -41,15 +43,15 @@ apache2_virtualhosts:
     sslcertificatekeyfile: virtualhost01.example.com.key
     logdir: /var/log/apache2/
 ```
-name: name of the virtualhost, also used as certificate CN
-owner: owner of the document root / path
-group: group to bet set for document root / path
-docroot: main document root for virtualhost (htdocs directory)
-docpath: path where the docroot will be
-sslpath: path to the ssl certificate (will be used for the self-signed certificates, too)
-sslcertificatefile: name of the ssl certificate file (crt)
-sslcertificatekeyfile: name of the ssl certificate key (key)
-logdir: log directory for virtualhost specific logs
+- name: name of the virtualhost, also used as certificate CN
+- owner: owner of the document root / path
+- group: group to bet set for document root / path
+- docroot: main document root for virtualhost (htdocs directory)
+- docpath: path where the docroot will be
+- sslpath: path to the ssl certificate (will be used for the self-signed certificates, too)
+- sslcertificatefile: name of the ssl certificate file (crt)
+- sslcertificatekeyfile: name of the ssl certificate key (key)
+- logdir: log directory for virtualhost specific logs
 
 #### Switches
 There are some switches defined in the variables files with the below functionality:
