@@ -23,13 +23,13 @@ Below a short description of the used variables and their purpose:
 httpd_packages/apache2_packages
 ```
 Set of platform specific packages to be installed
-
+<br />
 
 ```
 apache2_modules
 ```
 Debian/Ubuntu-specific: Set of apache2 modules to be enabled by default
-
+<br />
 
 ```
 apache2_virtualhosts:
@@ -60,12 +60,12 @@ There are some switches defined in the variables files with the below functional
 sslvhosts
 ```
 Can be true or false. When true it will create the self-signed certificates and ssl part of the virtualhost.
-
+<br />
 ```
 apache_create_virtualhosts
 ```
 Can be true or false. When false, no virtualhosts will be created.
-
+<br />
 ```
 firewalldrules
 ```
